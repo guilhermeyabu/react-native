@@ -7,11 +7,12 @@
  */
 
 import React from 'react';
-import { SafeAreaView, View, Text, Image, Dimensions, ScrollView, FlatList, StyleSheet } from 'react-native';
+import { SafeAreaView, View, Text, Image, Dimensions, FlatList, StyleSheet } from 'react-native';
+import { ProfilePicture, UserInfo, UserPhoto } from './styles';
 
 const deviceWidth = Dimensions.get('screen').width;
 
-const people = [{ id: 1, nome: 'Yabu' }, { id: 2, nome: 'Gabi' }, { id: 3, nome: 'Bazinga' }];
+const people = [{ id: '1', nome: 'Yabu' }, { id: '2', nome: 'Gabi' }, { id: '3', nome: 'Bazinga' }];
 
 export default function App() {
   return (
@@ -34,34 +35,12 @@ export default function App() {
 function Person({ person }) {
   return (
     <View>
-      <View style={styles.userHeader}>
-        <Image source={require('../assets/myself.jpg')}
-          style={styles.profilePicture} />
+      <UserInfo>
+        <ProfilePicture source={require('../assets/myself.jpg')} />
         <Text>{person.nome}</Text>
-      </View>
+      </UserInfo>
 
-      <Image source={require('../assets/myself.jpg')}
-        style={styles.userPhoto} />
+      <UserPhoto width = {deviceWidth} height = {deviceWidth} source={require('../assets/myself.jpg')}/>
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  userHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    margin: 10
-  },
-
-  profilePicture: {
-    width: 40,
-    height: 40,
-    marginRight: 10,
-    borderRadius: 20
-  },
-
-  userPhoto: {
-    width: deviceWidth,
-    height: deviceWidth
-  }
-})
