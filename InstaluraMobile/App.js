@@ -7,7 +7,9 @@
  */
 
 import React from 'react';
-import { SafeAreaView, View, Text, Image } from 'react-native';
+import { SafeAreaView, View, Text, Image, Dimensions } from 'react-native';
+
+const deviceWidth = Dimensions.get('screen').width;
 
 export default function App() {
   return (
@@ -16,7 +18,7 @@ export default function App() {
         <View>
           <Text>Yabunito</Text>
           <Image source={require('./assets/myself.jpg')}
-            style={{ width: 100, height: 100 }}
+            style={{ width: deviceWidth, height: deviceWidth }}
           />
         </View>
       </SafeAreaView>
