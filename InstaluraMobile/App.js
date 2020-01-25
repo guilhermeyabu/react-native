@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import { SafeAreaView, View, Text, Image, Dimensions, ScrollView } from 'react-native';
+import { SafeAreaView, View, Text, Image, Dimensions, ScrollView, FlatList } from 'react-native';
 
 const deviceWidth = Dimensions.get('screen').width;
 
@@ -17,15 +17,17 @@ export default function App() {
   return (
     <>
       <SafeAreaView>
-        <ScrollView>
-          {people.map(person =>
-            <View key={person.id}>
-              <Text>{person.nome}</Text>  
+        <FlatList
+        keyExtractor={item => item.id}
+          data={people}
+          renderItem={({ item }) =>
+            <View key={item.id}>
+              <Text>{item.nome}</Text>
               <Image source={require('./assets/myself.jpg')}
                 style={{ width: deviceWidth, height: deviceWidth }} />
             </View>
-          )}
-        </ScrollView>
+          }
+        />
       </SafeAreaView>
     </>
   );
