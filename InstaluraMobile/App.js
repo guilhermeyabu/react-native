@@ -18,17 +18,21 @@ export default function App() {
     <>
       <SafeAreaView>
         <FlatList
-        keyExtractor={item => item.id}
+          keyExtractor={item => item.id}
           data={people}
-          renderItem={({ item }) =>
-            <View key={item.id}>
-              <Text>{item.nome}</Text>
-              <Image source={require('./assets/myself.jpg')}
-                style={{ width: deviceWidth, height: deviceWidth }} />
-            </View>
-          }
+          renderItem={({ item }) => <Person person = {item} />}
         />
       </SafeAreaView>
     </>
   );
+}
+
+function Person({ person }) {
+  return (
+    <View key={person.id}>
+      <Text>{person.nome}</Text>
+      <Image source={require('./assets/myself.jpg')}
+        style={{ width: deviceWidth, height: deviceWidth }} />
+    </View>
+  )
 }
