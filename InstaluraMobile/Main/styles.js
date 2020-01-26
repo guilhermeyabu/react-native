@@ -1,5 +1,17 @@
 import styled from 'styled-components/native';
 
+export const AppText = styled.Text`
+    font-size: 22px;
+    margin-top: 10px;
+    align-self: center;
+    font-family: fantasy;
+`;
+
+export const UserText = styled(AppText)`
+    font-size: 16px;
+    margin-top: 0px;
+`;
+
 export const ProfilePicture = styled.Image`
   width: 40px;
   height: 40px;

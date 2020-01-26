@@ -7,8 +7,8 @@
  */
 
 import React from 'react';
-import { SafeAreaView, View, Text, Image, Dimensions, FlatList, StyleSheet } from 'react-native';
-import { ProfilePicture, UserInfo, UserPhoto } from './styles';
+import { SafeAreaView, View, Text, Dimensions, FlatList } from 'react-native';
+import { ProfilePicture, UserInfo, UserPhoto, AppText, UserText } from './styles';
 
 const deviceWidth = Dimensions.get('screen').width;
 
@@ -18,6 +18,7 @@ export default function App() {
   return (
     <>
       <SafeAreaView>
+        <AppText>Yabugram</AppText>
         <FlatList
           keyExtractor={item => item.id}
           data={people}
@@ -37,7 +38,7 @@ function Person({ person }) {
     <View>
       <UserInfo>
         <ProfilePicture source={require('../assets/myself.jpg')} />
-        <Text>{person.nome}</Text>
+        <UserText>{person.nome}</UserText>
       </UserInfo>
 
       <UserPhoto width = {deviceWidth} height = {deviceWidth} source={require('../assets/myself.jpg')}/>
