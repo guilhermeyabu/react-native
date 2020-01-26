@@ -7,9 +7,9 @@
  */
 
 import React, { Component } from 'react';
-import { SafeAreaView, Text, Dimensions, FlatList } from 'react-native';
+import { SafeAreaView, Dimensions, FlatList } from 'react-native';
 import { AppText } from './styles';
-import { Person } from './Person';
+import Person from './Person';
 
 export const deviceWidth = Dimensions.get('screen').width;
 
@@ -28,7 +28,7 @@ export default class App extends Component {
       .then(responseJson => this.setState({ people: responseJson }))
       .catch(e => {
         console.warn('Não foi possível carregar as fotos: ' + e);
-        this.setState({status: 'ERRO'})
+        this.setState({ status: 'ERRO' })
       });
   }
 
@@ -37,7 +37,7 @@ export default class App extends Component {
       <>
         <SafeAreaView>
           <AppText>Yabugram</AppText>
-          <FlatList
+          <FlatList style={{marginBottom: 60}}
             keyExtractor={item => item.id}
             data={this.state.people}
             renderItem={({ item }) => <Person person={item} />}

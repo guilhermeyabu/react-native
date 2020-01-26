@@ -32,4 +32,14 @@ export const UserPhoto = styled.Image`
     margin-bottom: 20px;
 `;
 
+export const IconButton = styled.View`
+  margin-left: 10px;
+  margin-bottom: 10px;
+`;
+
+export const LikeNumbers = styled.Text`
+  font-weight: bold;
+  margin-left: 10px;
+`;
+
 
