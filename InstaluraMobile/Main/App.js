@@ -6,42 +6,44 @@
  * @flow
  */
 
-import React from 'react';
-import { SafeAreaView, View, Text, Dimensions, FlatList } from 'react-native';
-import { ProfilePicture, UserInfo, UserPhoto, AppText, UserText } from './styles';
+import React, { Component } from 'react';
+import { SafeAreaView, Text, Dimensions, FlatList } from 'react-native';
+import { AppText } from './styles';
+import { Person } from './Person';
 
-const deviceWidth = Dimensions.get('screen').width;
+export const deviceWidth = Dimensions.get('screen').width;
 
-const people = [{ id: '1', nome: 'Yabu' }, { id: '2', nome: 'Gabi' }, { id: '3', nome: 'Bazinga' }];
+export default class App extends Component {
 
-export default function App() {
-  return (
-    <>
-      <SafeAreaView>
-        <AppText>Yabugram</AppText>
-        <FlatList
-          keyExtractor={item => item.id}
-          data={people}
-          renderItem={({ item }) => <Person person={item} />}
-        />
-      </SafeAreaView>
-    </>
-  );
-}
+  constructor() {
+    super();
+    this.state = {
+      people: []
+    }
+  }
 
-/**
- * Component that represents a person with a Text (name) and a Image (Photo).
- * @param {Item from people's list} person 
- */
-function Person({ person }) {
-  return (
-    <View>
-      <UserInfo>
-        <ProfilePicture source={require('../assets/myself.jpg')} />
-        <UserText>{person.nome}</UserText>
-      </UserInfo>
+  async componentDidMount() {
+    fetch('https://instalura-api.herokuapp.com/api/public/fotos/rafael')
+      .then(response => response.json())
+      .then(responseJson => this.setState({ people: responseJson }))
+      .catch(e => {
+        console.warn('Não foi possível carregar as fotos: ' + e);
+        this.setState({status: 'ERRO'})
+      });
+  }
 
-      <UserPhoto width = {deviceWidth} height = {deviceWidth} source={require('../assets/myself.jpg')}/>
-    </View>
-  )
+  render() {
+    return (
+      <>
+        <SafeAreaView>
+          <AppText>Yabugram</AppText>
+          <FlatList
+            keyExtractor={item => item.id}
+            data={this.state.people}
+            renderItem={({ item }) => <Person person={item} />}
+          />
+        </SafeAreaView>
+      </>
+    );
+  }
 }

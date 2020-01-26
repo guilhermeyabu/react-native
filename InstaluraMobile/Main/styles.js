@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 export const AppText = styled.Text`
     font-size: 22px;
     margin-top: 10px;
+    margin-bottom: 10px;
     align-self: center;
     font-family: fantasy;
 `;
