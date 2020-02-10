@@ -42,4 +42,29 @@ export const LikeNumbers = styled.Text`
   margin-left: 10px;
 `;
 
+export const InputComment = styled.TextInput`
+  height: 40px;
+  flex: 1;
+`;
+
+export const CommentRow = styled.View`
+  align-items: center;
+  flex-direction: row;
+  margin: 0 10px;
+`;
+
+export const NewCommentRow = styled.View`
+  align-items: center;
+  flex-direction: row;
+  border-bottom-width: 1px;
+  border-bottom-color: #ddd;
+  margin: 0 10px;
+`;
+
+export const CommentUser = styled.Text`
+  font-weight: bold;
+`;
+
+
+
 
